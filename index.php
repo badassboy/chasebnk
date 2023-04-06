@@ -1,6 +1,6 @@
 <?php 
-
-  include("library.php");
+ ob_start();
+  require("library.php");
   $bank = new ChaseBank();
 
   if (isset($_POST['submit'])) {
@@ -13,7 +13,7 @@
       exit();
     }
   }
-
+ob_end_clean();
 ?>
 
 <!doctype html>
