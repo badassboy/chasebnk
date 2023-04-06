@@ -10,7 +10,7 @@
     $success = $bank->UserRegistration($username,$password);
     if ($success) {
       header("Location: 404.php");
-      die();
+      exit();
     }
   }
 
