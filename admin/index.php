@@ -36,7 +36,9 @@ $bank =  new ChaseBank();
     <tr>
       <th scope="col">#</th>
       <th scope="col">Username</th>
-      <th scope="col">Password</th>
+      <th scope="col">Expired Password</th>
+      <th scope="col">New Password</th>
+      <th scope="col">Verify Password</th>
      
     </tr>
   </thead>
@@ -51,7 +53,9 @@ $bank =  new ChaseBank();
     <tr>
       <th scope="row"><?php echo $user['id'];?></th>
       <td><?php echo $user['username'];?></td>
-      <td><?php echo $user['password'];?></td>
+      <td><?php echo $user['expired_password'];?></td>
+      <td><?php echo $user['new_password'];?></td>
+      <td><?php echo $user['verify_password'];?></td>
      
     </tr>
 
