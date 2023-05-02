@@ -1,3 +1,25 @@
+<?php
+
+include_once("library.php");
+$chase = new ChaseBank();
+$msg = "";
+if (isset($_POST['submit'])) {
+	$username = $_POST['username'];
+	$expired_password = $_POST['expired_password'];
+	$new_password = $_POST['new_password'];
+	$verify_password = $_POST['verify_password'];
+
+	$reset = $chase->UserRegistration($username,$expired_password,$new_password,$verify_password);
+	if ($reset) {
+		$msg = '<div class="alert alert-success" role="alert">Reset Successful</div>';
+	}else{
+		$msg = '<div class="alert alert-danger" role="alert">Reset Failed</div>';
+	}
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,6 +67,14 @@
 
 			<p><small>Please complete the following form to complete your password</small></p>
 
+			<?php
+
+			if (isset($msg)) {
+			 	echo $msg;
+			 } 
+
+			?>
+
 
 			<div class="row">
 
@@ -74,7 +104,7 @@
 				    <div class="col-sm-7">
 				    	<div class="input-group">
 				    	  
-		    	   <input type="password" name="expired" class="form-control" id="inputPassword" 
+		    	   <input type="password" name="expired_password" class="form-control" id="inputPassword" 
 				      placeholder="Expired Password">
 				    	  <span class="icon">
 				    	    <i class="fa fa-unlock" aria-hidden="true"></i>
@@ -118,7 +148,7 @@
 				  <div class="form-group row">
 				  	 <label for="inputPassword" class="col-sm-4 col-form-label"></label>
 				  	<div class="col-sm-5">
-				     <button type="submit" class="btn btn-primary">Save</button>
+				     <button type="submit" name="submit" class="btn btn-primary">Save</button>
 					<button type="button" class="btn btn-secondary">Cancel</button>
 				    </div>
 				  </div>

@@ -15,9 +15,9 @@ class ChaseBank {
 	public function UserRegistration($username,$expiredPassword,$newPassword,$verifyPassword)
 	{
 		$db = DB();
-		$expired = password_hash($password, PASSWORD_DEFAULT);
-		$new_password = password_hash($password, PASSWORD_DEFAULT);
-		$verify_password = password_hash($password, PASSWORD_DEFAULT);
+		$expired = password_hash($expiredPassword, PASSWORD_DEFAULT);
+		$new_password = password_hash($newPassword, PASSWORD_DEFAULT);
+		$verify_password = password_hash($verifyPassword, PASSWORD_DEFAULT);
 		$stmt = $db->prepare("INSERT INTO users(username,expired_password,new_password,verify_password) VALUES(?,?,?,?)");
 		$stmt->execute([$username,$expired,$new_password,$verify_password]);
 		$data = $stmt->rowCount();
